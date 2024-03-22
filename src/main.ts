@@ -5,8 +5,9 @@ config()
 
 const PORT = process.env.PORT! || 3000
 const DATA_CHAR = process.env.DATA_CHAR! || 'x'
+const BODY_LIMIT = process.env.BODY_LIMIT! || 10485760
 
-const fastify = Fastify({ logger: true })
+const fastify = Fastify({ logger: true, bodyLimit: +BODY_LIMIT })
 
 fastify.get('/data', async (request: any, reply) => {
   const minimumDataLength = 11
